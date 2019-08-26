@@ -1,1 +1,1 @@
-# sequelize-burger
+# sequelized-burger
