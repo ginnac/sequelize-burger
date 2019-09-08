@@ -1,8 +1,14 @@
 <li>
 	{{dataValues.burger_name}}
 
-	<button class="change-eaten btn btn-dark" data-id="{{dataValues.id}}" data-newEaten="{{eaten}}">
+	<form>
+  		<input type="text" name="firstname" id = "customer-name" value="Customer Name">
+  
+		<button class="change-eaten btn btn-dark" data-id="{{dataValues.id}}" data-newEaten="{{eaten}}">
 		{{#if eaten}}opps!{{else}}Devoure it!{{/if}}
-	</button>
+		</button>
+	</form> 
+
+	
       
 </li>

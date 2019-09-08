@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "",
-    "password": "",
+    "username": "root",
+    "password": "root",
     "database": "burgersequelize",
     "host": "localhost",
     "dialect": "mysql",

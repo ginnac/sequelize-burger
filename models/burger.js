@@ -20,9 +20,22 @@ module.exports = function(sequelize, DataTypes) {
     // if you don't want that, set the following
     freezeTableName: true
   });
+
+
+  Burger.associate = function(models) {
+    // We're saying that a Post should belong to an Author
+    // A Post can't be created without an Author due to the foreign key constraint
+    Burger.belongsTo(models.Customer, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+
   return Burger;
 
- // Syncs with DB
+ 
 
 
 };
