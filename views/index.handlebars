@@ -20,11 +20,13 @@
 
             <h2>Burger's Waiting list:</h2>
             <ul>
-                {{#each burgers}}
-                    {{#unless dataValues.devoured}}
-                    {{> burgers/burger-block eaten=false}}
-                    <br>
-                    {{/unless}}
+                {{#each customers}}
+                    {{#each Burgers}}
+                        {{#unless dataValues.devoured}}
+                            {{>customers/burger-block eaten=false}}
+                                <br>
+                        {{/unless}}
+                    {{/each}}
                 {{/each}}
             </ul>
         </div>
@@ -36,13 +38,19 @@
             <h2>Devoured burgers!</h2>
 
                 <ul>
-                    {{#each burgers}}
-                        {{#if dataValues.devoured}}
+                    {{#each customers}}
+                        {{#if dataValues.real_customer}}
+                            {{#each Burgers}}
+                                {{#if dataValues.devoured}}
+                            
                         <li>
-	                    {{dataValues.burger_name}}
-                            <button class="delete-burger btn btn-dark" data-id="{{this.dataValues.id}}">Delete</button>
-                
+	                                {{burger_name}}
+                                    <button class="delete-burger btn btn-dark" data-id="{{this.dataValues.id}}">Delete</button>   
                         </li>
+                                {{/if}}
+                            {{/each}}
+                        
+                         <p> Eaten by customer: {{dataValues.customer_name}} </p>
                         <br>
                         {{/if}}
                     {{/each}}

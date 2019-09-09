@@ -6,7 +6,12 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: [1]
         }
-      }
+      },
+      real_customer: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
     }, 
     {
       // disable the modification of tablenames; By default, sequelize will automatically

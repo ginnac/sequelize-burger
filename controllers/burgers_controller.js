@@ -15,11 +15,13 @@ sequelizeConnection.sync();
 
 //render html with database table data
 router.get("/", function(req, res) {
-  db.Burger.findAll({include: [db.Customer]}).then(function(data) {
+  db.Customer.findAll({ 
+    include: [db.Burger],
+  }).then(function(data) {
       
   // Pass the returned data into a Handlebars object and then render it
-    var tableObject = { burgers: data };
-    //console.log(data);
+    var tableObject = { customers: data };
+    console.log(tableObject);
     res.render('index', tableObject);
     
   });
@@ -40,6 +42,20 @@ router.get("/api/customers/:id", function(req, res) {
     res.json(dbCustomer);
   });
 });
+
+//find burger by id
+router.get("/api/burger/:id", function(req, res) {
+
+  db.Burger.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbBurger) {
+    //console.log(res);
+    res.json(dbBurger);
+  });
+});
+
 
 
 //find customer by name
@@ -73,13 +89,32 @@ router.post("/api/burgers", function(req, res) {
 //post new row in our customer data
 router.post("/api/store", function(req, res) {
   //db.Customer.create({Customer_name:"storestock"}).then
-  db.Customer.create({customer_name:req.body.customer_name}).then(
-    function() {
+  db.Customer.create(req.body).then(
+    function(dbCustomer) {
   // Send back the ID of the new row
-    res.redirect("/");
+   res.json(dbCustomer);
     });
   });
 
+
+//change rows data from customer table, used to change real_customer column
+router.put("/api/cust/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
+  db.Customer.update(req.body,
+   {where: {
+    id: req.params.id
+  }
+  }).then(function(dbCustomer) {
+      // If no rows were changed, 
+      //then the ID must not exist, so 404 status 
+    if (dbCustomer.changedRows == 0) {
+      return res.status(404).end();
+      //else ID must exist so 200 (ok status)
+    } else {
+      res.status(200).end();
+    }
+  });
+});
 
 //change rows data
   router.put("/api/burgers/:id", function(req, res) {
