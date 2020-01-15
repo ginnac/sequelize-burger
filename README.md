@@ -1,8 +1,29 @@
-# Burger app - Sequelize
-The Burger Eater App
-Burger eater is an application that lets the user list Burger names, which are posted in the waiting to be devoured list; then the user can enter a customer name, click on the devoured button which will take the customer name including the burger data corresponding to this customer to the devoured burgers column.  
+#  Burger app - Sequelize
 
-This application uses mysql, sequelize, express, and handlebars node packages. It applies the sequelize models to to build and associate tables in mysql database, express to set html and api routes, and handlebars is use to get tables data in a easier way. 
+[Live Demo](https://crazy-burger-sequelized.herokuapp.com/) 
+The Burger Eater App
+
+## Overview
+
+Burger eater is an application that lets the user list Burger names, which are posted in the waiting to be devoured list; then the user can enter a customer name, click on the devoured button which will take the customer name including the burger data corresponding to this customer to the devoured burgers column. 
+
+
+## Technologies:
+* Node.js
+* Mysql
+* Sequelize
+* Express
+* Handlebars
+
+It applies the sequelize models to to build and associate tables in mysql database, express to set html and api routes, and handlebars is used to get tables data in a easier way.
+
+## Developer
+  * [Ginna Campbell](https://github.com/ginnac)
+
+
+ 
+
+ 
 
 
 Important: 
